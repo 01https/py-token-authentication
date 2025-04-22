@@ -11,8 +11,8 @@ class UserSerializer(serializers.ModelSerializer):
             "password": {"write_only": True, "min_length": 5}
         }
 
-    def create(self, validate_date):
-        return get_user_model().objects.create_user(**validate_date)
+    def create(self, validated_date):
+        return get_user_model().objects.create_user(**validated_date)
 
     def update(self, instance, validated_data):
         password = validated_data.pop("password", None)
